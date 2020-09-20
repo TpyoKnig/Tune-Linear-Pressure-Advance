@@ -50,10 +50,10 @@ curr_y = offset_y
 curr_z = layer0_z
 
 # setting the temp
-print(f"M140 S{bed_temp} ; setting bed temp and continue")
-print(f"M104 S{hotend_temp} ; set nozzle temp and continue")
-print(f"M190 S{bed_temp} ; block for bed temp")
-print(f"M109 S{hotend_temp} ; block for nozzle temp")
+print(f"""M140 S{bed_temp} ; setting bed temp and continue
+       M104 S{hotend_temp} ; set nozzle temp and continue
+       M190 S{bed_temp} ; block for bed temp
+       M109 S{hotend_temp} ; block for nozzle temp""")
 
 # home the printer
 print("G28 ; homing printer")
@@ -126,7 +126,7 @@ for l in range(layers):
     print(f"; layer {l:d}, pressure advance: {pressure_advance:.3f}")
     if alerting == 'yes':
         print(f"""M117 starting layer {l}")
-        M117 Pressure/Linear Advance set to: {pressure_advance}""")
+             M117 Pressure/Linear Advance set to: {pressure_advance}""")
     print(f"M572 D0 S{pressure_advance:.3f}")
     for i in range(num_patterns):
         line(space / 2, 0, fast_speed)
